@@ -1,9 +1,11 @@
 import React from 'react';
 
-export const Transaction = ({props}) => {
+export const Transaction = ({ transaction }) => {
+    const sign = transaction.amount < 0 ? '-' : '+';
+
     return (
         <li className="minus">
-            {props.transaction.text} <span>-$0</span><button className="delete-btn">x</button>
+            {transaction.text} <span>{sign}${Math.ads(transaction.amount)}</span><button className="delete-btn">x</button>
         </li>   
     )
 }
