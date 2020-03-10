@@ -3,10 +3,12 @@ const dotenv = require('dotenv');
 const colors = require('colors');
 const morgan = require('morgan');
 const connectDB = require('./config/db')
+var cors = require('cors')
 
 dotenv.config({path: './config/config.env'});
 
 connectDB();
+app.use(cors())
 
 const transactions = require('./routes/transactions');
 const app = express();
@@ -19,6 +21,6 @@ if(process.env.NODE_ENV === 'development') {
 
 app.use('/api/v1/transactions', transactions);
 
-const PORT = process.env.PORT || 8080
+const PORT = process.env.PORT || 8080;
 
 app.listen(PORT, console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`));
